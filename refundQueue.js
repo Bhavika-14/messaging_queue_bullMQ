@@ -8,11 +8,12 @@ const refundQueue = new Queue("refund-queue",{
 })
 
 async function addRefundTask(order){
-    const response = await refundQueue.add(order.id,{
-        amount:order.amount
+    const response = await refundQueue.add(`refund-to-${order.id}`,{
+        amount:order.amount,
+        id:order.id
     })
 
-    console.log("Job added to queue with id: ",response.id)
+    console.log("Job added to refundQueue with id: ",response.id)
 }
 
 export default addRefundTask;
