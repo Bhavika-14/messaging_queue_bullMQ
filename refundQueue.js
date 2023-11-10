@@ -1,4 +1,4 @@
-import { Queue } from "bullmq"
+const { Queue } =require("bullmq")
 
 const refundQueue = new Queue("refund-queue",{
     connection:{
@@ -16,4 +16,4 @@ async function addRefundTask(order){
     console.log("Job added to refundQueue with id: ",response.id)
 }
 
-export default addRefundTask;
+module.exports=addRefundTask
